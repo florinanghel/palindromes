@@ -1,6 +1,8 @@
 package lazcatluc.palindromes;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class MultipleBasePalindromeDecider {
@@ -25,6 +27,11 @@ public class MultipleBasePalindromeDecider {
 	
 	public MultipleBasePalindromeDecider withBasesToTest(Integer... basesToTest) {
 		this.basesToTest = Arrays.asList(basesToTest);
+		return this;
+	}
+	
+	public MultipleBasePalindromeDecider withBasesToTest(Collection<Integer> basesToTest) {
+		this.basesToTest = new ArrayList<Integer>(basesToTest);
 		return this;
 	}
 	
