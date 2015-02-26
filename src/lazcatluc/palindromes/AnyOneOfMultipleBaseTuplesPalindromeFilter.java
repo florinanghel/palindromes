@@ -6,6 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import lazcatluc.palindromes.decider.AnyOneOfMultipleBaseTuplesPalindrome;
+
 public class AnyOneOfMultipleBaseTuplesPalindromeFilter {
 	private Set<Set<Integer>> possibleBaseTuples = Collections.singleton(
 			Collections.singleton(10));
@@ -17,8 +19,8 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilter {
 	}
 	
 	public <T extends Number> Collection<T> filterNumbers(Collection<T> numbers) {
-		AnyOneOfMultipleBaseTuplesPalindromeDecider palindromeDecider = 
-				new AnyOneOfMultipleBaseTuplesPalindromeDecider()
+		AnyOneOfMultipleBaseTuplesPalindrome palindromeDecider = 
+				new AnyOneOfMultipleBaseTuplesPalindrome()
 					.withPossibleBaseTuples(possibleBaseTuples);
 		return 
 			numbers.stream().filter(currentNumber -> 

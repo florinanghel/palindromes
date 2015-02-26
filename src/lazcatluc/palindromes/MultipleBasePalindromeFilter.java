@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lazcatluc.palindromes.decider.MultipleBasePalindrome;
+
 public class MultipleBasePalindromeFilter {
 	private List<Integer> basesToTest = Arrays.asList(new Integer[]{10});
 	
@@ -20,8 +22,8 @@ public class MultipleBasePalindromeFilter {
 	}
 	
 	public <T extends Number> Collection<T> filterNumbers(Collection<T> numbers) {
-		MultipleBasePalindromeDecider palindromeDecider = 
-				new MultipleBasePalindromeDecider().withBasesToTest(basesToTest);
+		MultipleBasePalindrome palindromeDecider = 
+				new MultipleBasePalindrome().withBasesToTest(basesToTest);
 		return 
 			numbers.stream().filter(currentNumber -> 
 			palindromeDecider.representedBy(currentNumber).isPalindrome())

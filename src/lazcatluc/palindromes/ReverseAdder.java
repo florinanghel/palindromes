@@ -2,6 +2,8 @@ package lazcatluc.palindromes;
 
 import java.math.BigInteger;
 
+import lazcatluc.palindromes.decider.SimplePalindrome;
+
 public class ReverseAdder {
 	private final BigInteger number;
 	private final int radix;
@@ -25,7 +27,7 @@ public class ReverseAdder {
 	}
 	
 	private BigInteger computeReversed() {
-		return new BigInteger(new PalindromeDecider(number).reverseRepresentation(),
+		return new BigInteger(new SimplePalindrome().representedBy(number).reverseRepresentation(),
 				radix);
 	}
 	

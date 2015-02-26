@@ -1,27 +1,33 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.decider;
 
 import java.math.BigInteger;
 
-public class AdderUntilPalindromeDecider {
+import lazcatluc.palindromes.Decider;
+import lazcatluc.palindromes.ReverseAdder;
+
+public class AdderUntilPalindrome implements Decider {
 	private BigInteger number = BigInteger.ZERO;
 	private int radix = 10;
 	private int maxAdd = Integer.MAX_VALUE;
 	
-	public AdderUntilPalindromeDecider representedBy(String originalRepresentation) {
+	@Override
+	public AdderUntilPalindrome representedBy(String originalRepresentation) {
 		this.number = new BigInteger(originalRepresentation, radix);
 		return this;
 	}
 	
-	public AdderUntilPalindromeDecider representedBy(Number originalRepresentation) {
+	@Override
+	public AdderUntilPalindrome representedBy(Number originalRepresentation) {
 		this.number = BigInteger.valueOf(originalRepresentation.longValue());
 		return this;
 	} 
 	
-	public AdderUntilPalindromeDecider addingAtMost(int maxAdd) {
+	public AdderUntilPalindrome addingAtMost(int maxAdd) {
 		this.maxAdd = maxAdd;
 		return this;
 	}
 	
+	@Override
 	public boolean isPalindrome() {
 		ReverseAdder adder = new ReverseAdder(number, radix);
 		int count = maxAdd;
@@ -36,6 +42,6 @@ public class AdderUntilPalindromeDecider {
 	}
 
 	private boolean isPalindrome(ReverseAdder adder) {
-		return new PalindromeDecider(adder.toString()).isPalindrome();
+		return new SimplePalindrome().representedBy(adder.toString()).isPalindrome();
 	}
 }

@@ -1,23 +1,30 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.decider;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PalindromeDecider {
+import lazcatluc.palindromes.Decider;
+import lazcatluc.palindromes.ListReverser;
 
-	private final List<Character> original = new ArrayList<>();
+public class SimplePalindrome implements Decider {
+
+	private List<Character> original = new ArrayList<>();
 	
-	public PalindromeDecider(String possiblePalindrome) {
+	@Override
+	public SimplePalindrome representedBy(String possiblePalindrome) {
 		char[] palindromeChars = possiblePalindrome.toCharArray();
 		for (char c : palindromeChars) {
 			original.add(c);
 		}
+		return this;
 	}
 	
-	public PalindromeDecider(Number possiblePalindrome) {
-		this(possiblePalindrome.toString());
+	@Override
+	public SimplePalindrome representedBy(Number possiblePalindrome) {
+		return representedBy(possiblePalindrome.toString());
 	}
 	
+	@Override
 	public boolean isPalindrome() {
 		return original.equals(reversed());
 	}
