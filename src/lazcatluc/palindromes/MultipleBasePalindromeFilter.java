@@ -1,13 +1,21 @@
 package lazcatluc.palindromes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MultipleBasePalindromeFilter {
-	private Integer[] basesToTest = new Integer[]{10};
+	private List<Integer> basesToTest = Arrays.asList(new Integer[]{10});
 	
 	public MultipleBasePalindromeFilter withBasesToTest(Integer... basesToTest) {
-		this.basesToTest = basesToTest.clone();
+		this.basesToTest = Arrays.asList(basesToTest);
+		return this;
+	}
+	
+	public MultipleBasePalindromeFilter withBasesToTest(Collection<Integer> basesToTest) {
+		this.basesToTest = new ArrayList<Integer>(basesToTest);
 		return this;
 	}
 	
