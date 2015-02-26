@@ -5,10 +5,13 @@ import java.util.List;
 
 public class PalindromeDecider {
 
-	private final char[] palindromeChars;
+	private final List<Character> original = new ArrayList<>();
 	
 	public PalindromeDecider(String possiblePalindrome) {
-		palindromeChars = possiblePalindrome.toCharArray();
+		char[] palindromeChars = possiblePalindrome.toCharArray();
+		for (char c : palindromeChars) {
+			original.add(c);
+		}
 	}
 	
 	public PalindromeDecider(Number possiblePalindrome) {
@@ -16,13 +19,20 @@ public class PalindromeDecider {
 	}
 	
 	public boolean isPalindrome() {
-		List<Character> original = new ArrayList<>();
-		for (char c : palindromeChars) {
-			original.add(c);
+		return original.equals(reversed());
+	}
+
+	private List<Character> reversed() {
+		return new ListReverser<Character>(original).reverse();
+	}
+	
+	public String reverseRepresentation() {
+		List<Character> reversed = reversed(); 
+		char[] palindromeChars = new char[reversed.size()];
+		int i = 0;
+		for (Character c : reversed) {
+			palindromeChars[i++] = c;
 		}
-		
-		List<Character> reversed = new ListReverser<Character>(original).reverse();
-		
-		return original.equals(reversed);
+		return new String(palindromeChars);
 	}
 }

@@ -83,7 +83,7 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 		Set<Set<Integer>> possibleBaseTuples = new TupleGenerator<Integer>(
 				Arrays.asList(2,3,4,5,6,7,8,9,10),4).tuples();
 		List<Integer> numbersToTest = new ArrayList<Integer>();
-		for (int i = 10; i < 1000; i++) {
+		for (int i = 10; i < 500; i++) {
 			numbersToTest.add(i);
 		}
 		
