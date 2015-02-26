@@ -21,7 +21,7 @@ public class TupleGeneratorTest {
 		expected.add(Collections.singleton(2));
 		expected.add(Collections.singleton(3));
 		
-		assertEquals(expected, new TupleGenerator(original, 1).tuples());
+		assertEquals(expected, new TupleGenerator<Integer>(original, 1).tuples());
 	}
 	
 	@Test
@@ -33,6 +33,6 @@ public class TupleGeneratorTest {
 		expected.add(new HashSet<Number>(Arrays.asList(1,3)));
 		expected.add(new HashSet<Number>(Arrays.asList(2,3)));
 		
-		assertEquals(expected, new TupleGenerator(original, 2).tuples());
+		assertEquals(expected, new TupleGenerator<Integer>(original, 2).tuples());
 	}
 }

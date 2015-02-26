@@ -2,6 +2,7 @@ package lazcatluc.palindromes;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -75,6 +76,21 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 					.withPossibleBaseTuples(possibleBaseTuples)
 					.filterNumbers(base10digits()));
+	}
+	
+	@Test
+	public void allPalindromesInAtLeast4BasesBetween2And10() {
+		Set<Set<Integer>> possibleBaseTuples = new TupleGenerator<Integer>(
+				Arrays.asList(2,3,4,5,6,7,8,9,10),4).tuples();
+		List<Integer> numbersToTest = new ArrayList<Integer>();
+		for (int i = 10; i < 1000; i++) {
+			numbersToTest.add(i);
+		}
+		
+		assertEquals(Arrays.asList(121,373),
+				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
+					.withPossibleBaseTuples(possibleBaseTuples)
+					.filterNumbers(numbersToTest));
 	}
 	
 	private static List<Integer> base10digits() {
