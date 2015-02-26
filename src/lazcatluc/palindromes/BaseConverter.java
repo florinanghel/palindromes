@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class BaseConverter {
 
-	private Number numberToConvert = 0;
+	private String numberAsString = "0";
 	private int fromBase = 10;
 	private int toBase = 2;
 	
@@ -19,13 +19,18 @@ public class BaseConverter {
 	}
 	
 	public BaseConverter forNumber(Number numberToConvert) {
-		this.numberToConvert = numberToConvert;
+		this.numberAsString = numberToConvert.toString();
 		return this;
 	}
 	
 	public String convert() {
-		return new BigInteger(numberToConvert.toString(), fromBase)
+		return new BigInteger(numberAsString, fromBase)
 			.toString(toBase);
 
+	}
+
+	public BaseConverter forString(String string) {
+		this.numberAsString = string;
+		return this;
 	}
 }
