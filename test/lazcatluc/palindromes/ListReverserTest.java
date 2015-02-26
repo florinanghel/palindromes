@@ -17,7 +17,7 @@ public class ListReverserTest {
 	
 	@Test
 	public void revertsListOfNumbers() {
-		List<Integer> originalList = Arrays.asList(new Integer[]{1,2,3,4,5});
+		List<Integer> originalList = new IntegerSequence().from(1).to(5).build();
 		List<Integer> expectedList = Arrays.asList(new Integer[]{5,4,3,2,1});
 		
 		assertEquals(expectedList, new ListReverser<Integer>(originalList).reverse());
