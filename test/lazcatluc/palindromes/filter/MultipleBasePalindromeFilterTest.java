@@ -14,14 +14,14 @@ public class MultipleBasePalindromeFilterTest {
 	@Test
 	public void allDigitsArePalindromes() {
 		assertEquals(new IntegerSequence().build(),
-				new MultipleBasePalindromeFilter().filterNumbers(new IntegerSequence().build()));
+				new MultipleBasePalindromeFilter().keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	@Test
 	public void allDigitsAnd10AreNotPalindromes() {
 		List<Integer> expectedFiltered = new IntegerSequence().build();
 		assertEquals(expectedFiltered,
-				new MultipleBasePalindromeFilter().filterNumbers(
+				new MultipleBasePalindromeFilter().keepOnlyPalindromes(
 						new IntegerSequence().to(10).build()));
 	}
 
@@ -32,7 +32,7 @@ public class MultipleBasePalindromeFilterTest {
 		assertEquals(digits,
 				new MultipleBasePalindromeFilter()
 					.withBasesToTest(new IntegerSequence().from(11).to(16).build())
-					.filterNumbers(digits));
+					.keepOnlyPalindromes(digits));
 	}
 	
 	@Test
@@ -40,7 +40,7 @@ public class MultipleBasePalindromeFilterTest {
 		assertEquals(Arrays.asList(0,1,3,5,7,9),
 				new MultipleBasePalindromeFilter()
 					.withBasesToTest(2)
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	@Test
@@ -48,6 +48,6 @@ public class MultipleBasePalindromeFilterTest {
 		assertEquals(Arrays.asList(0,1,3,5),
 				new MultipleBasePalindromeFilter()
 					.withBasesToTest(2,4)
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 }

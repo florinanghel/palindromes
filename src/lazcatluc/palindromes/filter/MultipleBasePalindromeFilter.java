@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.List;
 
 import lazcatluc.palindromes.Decider;
-import lazcatluc.palindromes.Filter;
+import lazcatluc.palindromes.FilterPalindromes;
 import lazcatluc.palindromes.decider.MultipleBasePalindrome;
 
-public class MultipleBasePalindromeFilter implements Filter {
+public class MultipleBasePalindromeFilter implements FilterPalindromes {
 	private List<Integer> basesToTest = Arrays.asList(new Integer[]{10});
 	
 	public MultipleBasePalindromeFilter withBasesToTest(Integer... basesToTest) {

@@ -20,14 +20,14 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 	public void allDigitsArePalindromes() {
 		assertEquals(new IntegerSequence().build(),
 				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	@Test
 	public void allDigitsAnd10AreNotPalindromes() {
 		List<Integer> expectedFiltered = new IntegerSequence().build();
 		assertEquals(expectedFiltered,
-				new AnyOneOfMultipleBaseTuplesPalindromeFilter().filterNumbers(
+				new AnyOneOfMultipleBaseTuplesPalindromeFilter().keepOnlyPalindromes(
 						new IntegerSequence().to(10).build()));
 	}
 
@@ -39,7 +39,7 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 					.withPossibleBaseTuples(Collections.singleton(
 							new HashSet<Integer>(new IntegerSequence().from(11).to(16).build())))
-					.filterNumbers(digits));
+					.keepOnlyPalindromes(digits));
 	}
 	
 	@Test
@@ -48,7 +48,7 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 					.withPossibleBaseTuples(Collections.singleton(
 							new HashSet<Integer>(Arrays.asList(2))))
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 			new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 				.withPossibleBaseTuples(Collections.singleton(
 						new HashSet<Integer>(Arrays.asList(2,4))))
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	@Test
@@ -66,7 +66,7 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 			new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 				.withPossibleBaseTuples(Collections.singleton(
 						new HashSet<Integer>(Arrays.asList(3,5))))
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	
@@ -79,7 +79,7 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 		assertEquals(Arrays.asList(0,1,2,3,4,5),
 				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 					.withPossibleBaseTuples(possibleBaseTuples)
-					.filterNumbers(new IntegerSequence().build()));
+					.keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 	
 	@Test
@@ -94,6 +94,6 @@ public class AnyOneOfMultipleBaseTuplesPalindromeFilterTest {
 		assertEquals(Arrays.asList(121,373),
 				new AnyOneOfMultipleBaseTuplesPalindromeFilter()
 					.withPossibleBaseTuples(possibleBaseTuples)
-					.filterNumbers(numbersToTest));
+					.keepOnlyPalindromes(numbersToTest));
 	}
 }

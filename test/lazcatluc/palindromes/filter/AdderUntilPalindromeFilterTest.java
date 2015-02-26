@@ -14,14 +14,14 @@ public class AdderUntilPalindromeFilterTest {
 	@Test
 	public void allDigitsArePalindromes() {
 		assertEquals(new IntegerSequence().build(), new AdderUntilPalindromeFilter()
-				.addingAtMost(0).filterNumbers(new IntegerSequence().build()));
+				.addingAtMost(0).keepOnlyPalindromes(new IntegerSequence().build()));
 	}
 
 	@Test
 	public void allDigitsAnd10AreNotPalindromes() {
 		assertEquals(
 				new IntegerSequence().build(),
-				new AdderUntilPalindromeFilter().addingAtMost(0).filterNumbers(
+				new AdderUntilPalindromeFilter().addingAtMost(0).keepOnlyPalindromes(
 						new IntegerSequence().to(10).build()));
 	}
 
@@ -31,7 +31,7 @@ public class AdderUntilPalindromeFilterTest {
 		
 		numbers.removeAll(
 				new AdderUntilPalindromeFilter().addingAtMost(10)
-					.filterNumbers(numbers));
+					.keepOnlyPalindromes(numbers));
 					
 		assertEquals(Arrays.asList(89,98), numbers);
 	}
