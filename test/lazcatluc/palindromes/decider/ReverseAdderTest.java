@@ -1,6 +1,7 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.decider;
 
 import static org.junit.Assert.*;
+import lazcatluc.palindromes.decider.ReverseAdder;
 
 import org.junit.Test;
 

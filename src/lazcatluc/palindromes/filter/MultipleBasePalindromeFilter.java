@@ -1,14 +1,15 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.filter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import lazcatluc.palindromes.Decider;
+import lazcatluc.palindromes.Filter;
 import lazcatluc.palindromes.decider.MultipleBasePalindrome;
 
-public class MultipleBasePalindromeFilter {
+public class MultipleBasePalindromeFilter implements Filter {
 	private List<Integer> basesToTest = Arrays.asList(new Integer[]{10});
 	
 	public MultipleBasePalindromeFilter withBasesToTest(Integer... basesToTest) {
@@ -20,14 +21,9 @@ public class MultipleBasePalindromeFilter {
 		this.basesToTest = new ArrayList<Integer>(basesToTest);
 		return this;
 	}
-	
-	public <T extends Number> Collection<T> filterNumbers(Collection<T> numbers) {
-		MultipleBasePalindrome palindromeDecider = 
-				new MultipleBasePalindrome().withBasesToTest(basesToTest);
-		return 
-			numbers.stream().filter(currentNumber -> 
-			palindromeDecider.representedBy(currentNumber).isPalindrome())
-				.collect(Collectors.toList());
-		
+
+	@Override
+	public Decider newDecider() {
+		return new MultipleBasePalindrome().withBasesToTest(basesToTest);
 	}
 }

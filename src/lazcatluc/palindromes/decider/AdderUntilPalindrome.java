@@ -3,7 +3,6 @@ package lazcatluc.palindromes.decider;
 import java.math.BigInteger;
 
 import lazcatluc.palindromes.Decider;
-import lazcatluc.palindromes.ReverseAdder;
 
 public class AdderUntilPalindrome implements Decider {
 	private BigInteger number = BigInteger.ZERO;

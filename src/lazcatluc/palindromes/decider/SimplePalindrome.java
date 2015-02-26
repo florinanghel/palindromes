@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lazcatluc.palindromes.Decider;
-import lazcatluc.palindromes.ListReverser;
 
 public class SimplePalindrome implements Decider {
 

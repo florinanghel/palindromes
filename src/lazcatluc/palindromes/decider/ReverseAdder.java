@@ -1,8 +1,6 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.decider;
 
 import java.math.BigInteger;
-
-import lazcatluc.palindromes.decider.SimplePalindrome;
 
 public class ReverseAdder {
 	private final BigInteger number;

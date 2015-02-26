@@ -1,4 +1,4 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.filter;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,6 +8,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import lazcatluc.palindromes.IntegerSequence;
+import lazcatluc.palindromes.TupleGenerator;
+import lazcatluc.palindromes.filter.AnyOneOfMultipleBaseTuplesPalindromeFilter;
 
 import org.junit.Test;
 

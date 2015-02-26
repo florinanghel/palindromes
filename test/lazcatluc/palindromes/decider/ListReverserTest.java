@@ -1,10 +1,13 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.decider;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import lazcatluc.palindromes.IntegerSequence;
+import lazcatluc.palindromes.decider.ListReverser;
 
 import org.junit.Test;
 

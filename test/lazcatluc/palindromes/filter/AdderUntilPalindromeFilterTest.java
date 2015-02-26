@@ -1,9 +1,12 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.filter;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
+
+import lazcatluc.palindromes.IntegerSequence;
+import lazcatluc.palindromes.filter.AdderUntilPalindromeFilter;
 
 import org.junit.Test;
 

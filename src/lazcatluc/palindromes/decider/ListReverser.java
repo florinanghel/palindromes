@@ -1,4 +1,4 @@
-package lazcatluc.palindromes;
+package lazcatluc.palindromes.decider;
 
 import java.util.ArrayList;
 import java.util.List;
