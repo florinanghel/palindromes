@@ -2,7 +2,6 @@ package lazcatluc.palindromes.decider;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import lazcatluc.palindromes.decider.AdderUntilPalindrome;
 
 import org.junit.Test;
 
@@ -43,4 +42,5 @@ public class AdderUntilPalindromedTest {
 		assertTrue(new AdderUntilPalindrome().representedBy(708)
 			.addingAtMost(2).isPalindrome());
 	}
+	
 }

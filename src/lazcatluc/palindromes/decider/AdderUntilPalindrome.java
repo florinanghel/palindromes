@@ -7,6 +7,7 @@ import lazcatluc.palindromes.Decider;
 public class AdderUntilPalindrome implements Decider {
 	private final ThreadLocal<BigInteger> number = ThreadLocal.withInitial(() -> BigInteger.ZERO);
 	private int radix = 10;
+	private ThreadLocal<Integer> stepsUntilConvert = ThreadLocal.withInitial(() -> 0);
 	private int maxAdd = Integer.MAX_VALUE;
 	
 	@Override
@@ -33,6 +34,7 @@ public class AdderUntilPalindrome implements Decider {
 		while (count >= 0) {
 			count--;
 			if (isPalindrome(adder)) {
+				stepsUntilConvert.set(maxAdd - count);
 				return true;
 			}
 			adder = adder.addReverse();
@@ -42,6 +44,10 @@ public class AdderUntilPalindrome implements Decider {
 
 	private boolean isPalindrome(ReverseAdder adder) {
 		return new SimplePalindrome().representedBy(adder.toString()).isPalindrome();
+	}
+	
+	public int getStepsUntilConvert() {
+		return stepsUntilConvert.get();
 	}
 		
 }
