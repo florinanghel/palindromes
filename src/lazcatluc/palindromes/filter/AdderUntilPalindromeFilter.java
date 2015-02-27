@@ -16,4 +16,6 @@ public class AdderUntilPalindromeFilter implements FilterPalindromes {
 	public Decider newDecider() {
 		return new AdderUntilPalindrome().addingAtMost(maxAdd);
 	}
+	
+	
 }

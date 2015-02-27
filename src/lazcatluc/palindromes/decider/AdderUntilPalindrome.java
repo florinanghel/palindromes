@@ -5,19 +5,19 @@ import java.math.BigInteger;
 import lazcatluc.palindromes.Decider;
 
 public class AdderUntilPalindrome implements Decider {
-	private BigInteger number = BigInteger.ZERO;
+	private final ThreadLocal<BigInteger> number = ThreadLocal.withInitial(() -> BigInteger.ZERO);
 	private int radix = 10;
 	private int maxAdd = Integer.MAX_VALUE;
 	
 	@Override
 	public AdderUntilPalindrome representedBy(String originalRepresentation) {
-		this.number = new BigInteger(originalRepresentation, radix);
+		this.number.set(new BigInteger(originalRepresentation, radix));
 		return this;
 	}
 	
 	@Override
 	public AdderUntilPalindrome representedBy(Number originalRepresentation) {
-		this.number = BigInteger.valueOf(originalRepresentation.longValue());
+		this.number.set(BigInteger.valueOf(originalRepresentation.longValue()));
 		return this;
 	} 
 	
@@ -28,7 +28,7 @@ public class AdderUntilPalindrome implements Decider {
 	
 	@Override
 	public boolean isPalindrome() {
-		ReverseAdder adder = new ReverseAdder(number, radix);
+		ReverseAdder adder = new ReverseAdder(number.get(), radix);
 		int count = maxAdd;
 		while (count >= 0) {
 			count--;
@@ -43,4 +43,5 @@ public class AdderUntilPalindrome implements Decider {
 	private boolean isPalindrome(ReverseAdder adder) {
 		return new SimplePalindrome().representedBy(adder.toString()).isPalindrome();
 	}
+		
 }

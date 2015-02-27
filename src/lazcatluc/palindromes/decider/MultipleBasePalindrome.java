@@ -9,19 +9,19 @@ import lazcatluc.palindromes.BaseConverter;
 import lazcatluc.palindromes.Decider;
 
 public class MultipleBasePalindrome implements Decider {
-	private String originalRepresentation = "";
+	private final ThreadLocal<String> originalRepresentation = ThreadLocal.withInitial(() -> "");
 	private int originalBase = 10;
 	private List<Integer> basesToTest = Arrays.asList(new Integer[]{10});
 	
 	@Override
 	public MultipleBasePalindrome representedBy(String originalRepresentation) {
-		this.originalRepresentation = originalRepresentation;
+		this.originalRepresentation.set(originalRepresentation);
 		return this;
 	}
 	
 	@Override
 	public MultipleBasePalindrome representedBy(Number originalRepresentation) {
-		this.originalRepresentation = originalRepresentation.toString();
+		this.originalRepresentation.set(originalRepresentation.toString());
 		return this;
 	}
 	
@@ -42,19 +42,14 @@ public class MultipleBasePalindrome implements Decider {
 	
 	@Override
 	public boolean isPalindrome() {
-		if (originalRepresentation.isEmpty()) {
+		String myRepresentation = originalRepresentation.get();
+		if (myRepresentation.isEmpty()) {
 			return true;
 		}
-		BaseConverter converter = new BaseConverter()
-			.forString(originalRepresentation)
-			.fromBase(originalBase);
-		for (Integer baseToTest : basesToTest) {
-			String baseRepresentation = converter.toBase(baseToTest).convert();
-			boolean isPalindromeInBase = new SimplePalindrome().representedBy(baseRepresentation).isPalindrome();
-			if (!isPalindromeInBase) {
-				return false;
-			}
-		}
-		return true;
+		return basesToTest.stream()
+			.map(baseToTest -> new BaseConverter()
+									.forString(myRepresentation)
+									.fromBase(originalBase).toBase(baseToTest).convert())
+			.allMatch(baseRepresentation -> new SimplePalindrome().representedBy(baseRepresentation).isPalindrome());
 	}
 }

@@ -1,6 +1,6 @@
 package lazcatluc.palindromes.filter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +34,20 @@ public class AdderUntilPalindromeFilterTest {
 					.keepOnlyPalindromes(numbers));
 					
 		assertEquals(Arrays.asList(89,98), numbers);
+	}
+	
+	@Test
+	public void allNumbersAtMost10000ThatDontBecomePalindromesIn1000GenerationsPerformance() {
+		long start = System.currentTimeMillis();
+		List<Integer> numbers = new IntegerSequence().to(9999).build();
+		
+		numbers.removeAll(
+				new AdderUntilPalindromeFilter().addingAtMost(1000)
+					.keepOnlyPalindromes(numbers));
+					
+		long end = System.currentTimeMillis();
+		
+		assertTrue(end - start <= 5000);
 	}
 
 }

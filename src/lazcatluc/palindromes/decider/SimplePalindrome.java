@@ -7,13 +7,13 @@ import lazcatluc.palindromes.Decider;
 
 public class SimplePalindrome implements Decider {
 
-	private List<Character> original = new ArrayList<>();
+	private final ThreadLocal<List<Character>> original = ThreadLocal.withInitial(() -> new ArrayList<>());
 	
 	@Override
 	public SimplePalindrome representedBy(String possiblePalindrome) {
 		char[] palindromeChars = possiblePalindrome.toCharArray();
 		for (char c : palindromeChars) {
-			original.add(c);
+			original.get().add(c);
 		}
 		return this;
 	}
@@ -25,11 +25,11 @@ public class SimplePalindrome implements Decider {
 	
 	@Override
 	public boolean isPalindrome() {
-		return original.equals(reversed());
+		return original.get().equals(reversed());
 	}
 
 	private List<Character> reversed() {
-		return new ListReverser<Character>(original).reverse();
+		return new ListReverser<Character>(original.get()).reverse();
 	}
 	
 	public String reverseRepresentation() {

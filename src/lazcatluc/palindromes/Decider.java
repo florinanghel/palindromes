@@ -5,5 +5,5 @@ public interface Decider {
 	Decider representedBy(String originalRepresentation);
 	Decider representedBy(Number originalRepresentation);
 	
-	boolean isPalindrome();
+	boolean isPalindrome();	
 }
